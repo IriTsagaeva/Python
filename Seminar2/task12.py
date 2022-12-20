@@ -5,32 +5,32 @@
 
 # Способ 1. С помощью корней квадратного уравнения по теореме Виета
 
-sum = input("Пожалуйста, введите сумму чисел: ")
-prod = input("пожалуйста, введите произведение чисел: ")
-try:
-    sum = int(sum)
-    prod = int(prod)
-    D = sum**2 - 4 * prod
-    if D < 0:
-        print("Нет такой пары чисел, которая удовлетворяет заданным параметрам")
-    else:
-        numberХ = (sum + (D**0.5)) / 2
-        numberY = (sum - (D**0.5)) / 2
-        if (
-            numberХ <= 0
-            or numberY <= 0
-            or numberХ != int(numberХ)
-            or numberY != int(numberY)
-            or numberY > 1000
-            or numberХ > 1000
-        ):
-            print(
-                f"Нет такой пары натуральных чисел до 1000, которая удовлетворяет заданным параметрам"
-            )
-        else:
-            print(f"Числа загаданные Петей: {int(numberХ)} и {int(numberY)}")
-except ValueError:
-    print("Пожалуйста, введите параметры в числовом формате!")
+# sum = input("Пожалуйста, введите сумму чисел: ")
+# prod = input("пожалуйста, введите произведение чисел: ")
+# try:
+#     sum = int(sum)
+#     prod = int(prod)
+#     D = sum**2 - 4 * prod
+#     if D < 0:
+#         print("Нет такой пары чисел, которая удовлетворяет заданным параметрам")
+#     else:
+#         numberХ = (sum + (D**0.5)) / 2
+#         numberY = (sum - (D**0.5)) / 2
+#         if (
+#             numberХ <= 0
+#             or numberY <= 0
+#             or numberХ != int(numberХ)
+#             or numberY != int(numberY)
+#             or numberY > 1000
+#             or numberХ > 1000
+#         ):
+#             print(
+#                 f"Нет такой пары натуральных чисел до 1000, которая удовлетворяет заданным параметрам"
+#             )
+#         else:
+#             print(f"Числа загаданные Петей: {int(numberХ)} и {int(numberY)}")
+# except ValueError:
+#     print("Пожалуйста, введите параметры в числовом формате!")
 
 
 # Способ 2. С помошью перебора в циклах
@@ -44,19 +44,16 @@ try:
         print(
             f"Нет такой пары натуральных чисел до 1000, которая удовлетворяет заданным параметрам"
         )
+    elif sum > 2000 or prod > 1000000:
+        print("Нельзя загадывать число больше 1000!!!")
     else:
         result = False
         k = 1
-        while k <= 10:
-            if result == True:
+        while k <= sum // 2:
+            if sum - k == prod / k:
+                print(f"Числа загаданные Петей: {k} и {sum-k}")
+                result = True
                 break
-            l = 1
-            while l <= 10:
-                if l + k == sum and l * k == prod:
-                    print(f"Числа загаданные Петей: {k} и {l}")
-                    result = True
-                    break
-                l = l + 1
             k = k + 1
         if result == False:
             print(
