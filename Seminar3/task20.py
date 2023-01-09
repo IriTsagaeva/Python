@@ -38,10 +38,13 @@ scrubble_dictionary = \
 
 word = input("Please, enter your word: ")
 word = word.upper()
-sum = 0
-for i in word:
-    for key in scrubble_dictionary:
-        if ( i in key):
-            sum += scrubble_dictionary[key]
-            break
-print(sum)        
+if word.isalpha():
+    sum = 0
+    for i in word:
+        for key in scrubble_dictionary:
+            if ( i in key):
+                sum += scrubble_dictionary[key]
+                break
+    print(sum) 
+else:
+    print("Слово должно состоять только из букв и содержать какие-либо символы кроме пробела!")       
